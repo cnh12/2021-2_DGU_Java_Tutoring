@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);	//공백이나 엔터를 기준으로 입력
+//		int a = sc.nextInt();
+//		float b = sc.nextFloat();
+		//주석처리 : 해당 블록잡고 Ctrl + / 또는 앞에 // 입력
+		
+//		String str1 = sc.next();	//공백 or 엔터를 기준으로 입력
+//		String str2 = sc.nextLine();	//nextLine은 엔터를 기준으로만 입력(공백도 입력받을 수가 있음)
+		
+		//syso만 치고 Ctrl+space + Enter
+		
+		//엔터를 넣을 수 있음, 탭을 넣을 수 있음
+		System.out.println("abc\ndef");
+		System.out.println("abc\tdef");
+		
+		//백슬래쉬(\)출력 방법
+		System.out.println("\\");
+		
+	}
+
+}
