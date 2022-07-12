@@ -1,0 +1,63 @@
+//계산기 실습
+
+class Calculator {
+	
+	private String name;
+	private String color;
+	private int price;
+	
+	Calculator(){
+		
+	}
+	
+	Calculator(String name, String color, int price){
+		this.name = name;
+		this.color = color;
+		this.price = price;
+	}
+	
+	void show() {
+		System.out.println(name+", "+color+", "+price);
+	}
+	
+	int add(int x, int y) {
+		return x+y;
+	}
+	int sub(int x, int y) {
+		return x-y;
+	}
+	int mul(int x, int y) {
+		return x*y;
+	}
+	int div(int x, int y) {
+		if(y == 0) {
+			return -99999;
+		}
+		return x/y;
+	}
+	double sqrt(int x) {
+		return Math.sqrt(x);
+	}
+	int fact(int x) {
+		if(x==1) return 1;
+		return x*fact(x-1);
+	}
+	
+	
+}
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Calculator c = new Calculator("ABC", "Black", 5000);
+		c.show();
+		System.out.println(c.add(3, 6));
+		System.out.println(c.div(10, 5));
+		System.out.println(c.div(5, 0));
+		System.out.println(c.sqrt(36));
+		System.out.println(c.fact(3));
+	}
+
+}
