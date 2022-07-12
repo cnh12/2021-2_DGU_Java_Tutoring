@@ -1,0 +1,120 @@
+import java.util.Scanner;
+
+//생성자 실습
+
+class Pizza {
+	
+	//private 필드는 같은 클래스 내에서만 사용 가능
+	private String company_name;
+	private String title;
+	private char size;
+	private int price;
+	
+	//생성자 - 초기화의 역할
+	
+	//기본 생성자 : 컴파일러가 자동으로 만들어줌,
+	//개발자가 필수로 작성하는 것이 좋음(추천)
+	Pizza(){
+		
+	}	
+
+	Pizza(String n){
+		this.company_name = n;
+	}
+	
+	Pizza(String n, String t){
+		this.company_name = n;
+		this.title = t;
+	}
+	
+	Pizza(String n, String t, char s, int p){
+		this.company_name = n;
+		this.title = t;
+		this.size = s;
+		this.price = p;
+	}
+	
+	//Setter
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setSize(char size) {
+		this.size = size;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	//Getter
+	public String getCompany_name() {
+		return company_name;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public char getSize() {
+		return size;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	void show() {	//같은 프로젝트 內 타 클래스에서 객체 생성 후 호출 가능
+		System.out.println("회사 이름 : "+company_name);
+		System.out.println("피자 이름 : "+title);
+		System.out.println("정가 : "+price);
+		System.out.println("피자 크기 : "+size);
+	}
+	
+	int coupon(int discount) {
+		show();	//같은 클래스의 메소드 호출
+		return (int)(this.price * (1-(discount*0.01)));
+	}
+	
+	
+}
+public class Main {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Pizza myPizza1 = new Pizza();
+		Pizza myPizza2 = new Pizza();
+		Pizza myPizza3 = new Pizza("피자헛");
+		Pizza myPizza4 = new Pizza("피자헛", "포테이토피자");
+		Pizza myPizza5 = new Pizza("피자헛", "포테이토피자", 'M', 20000);		
+		
+		
+		//Setter 사용
+		myPizza1.setCompany_name("피자헛");
+		myPizza1.setTitle("고구마피자");
+		myPizza1.setSize('L');
+		myPizza1.setPrice(20000);		
+		myPizza1.show();
+		
+		myPizza5.show();
+		
+		//생성자 사용		
+		
+		
+		
+		
+	}
+	
+
+}
+
+
+
