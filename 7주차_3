@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+//제네릭
+//컬렉션 : 자료구조를 자바에서 구현하여 사용자에게 제공하는 API
+//컬렉션의 요소는 객체만 가능 (기본타입 사용 불가 -> Wrapper클래스 사용)
+
+class People<T,M>{
+    private T name;
+    private M age;
+	
+    People(T name, M age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public T getName() {
+        return name;
+    }
+    public void setName(T name) {
+        this.name = name;
+    }
+    public M getAge() {
+        return age;
+    }
+    public void setAge(M age) {
+        this.age = age;
+    }
+	    
+}
+
+public class Main3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		People<String,Integer> p1 = new People<String,Integer>("Jack", 20);
+        People<Integer,Integer> p2 = new People<Integer,Integer>(1010100, 30);
+        System.out.println(p1.getName()+", "+p1.getAge());
+        System.out.println(p2.getName()+", "+p2.getAge());
+        System.out.println("-----------------");
+        
+        //ArrayList<E> 사용
+        ArrayList<String> arr = new ArrayList<String>();
+        arr.add("first");	//arr[0] = "first";
+        arr.add("second");
+        arr.add("third");       
+        
+        for(int i = 0; i < arr.size(); i++) {
+        	System.out.println(arr.get(i));	//arr[0]
+        }
+        System.out.println("-----------------");
+        
+        //Collections 클래스 사용
+        ArrayList<Integer> arr_i = new ArrayList<Integer>();
+        arr_i.add(2);
+        arr_i.add(1);
+        arr_i.add(3);
+        for(int i = 0; i < arr.size(); i++) {
+        	System.out.println(arr_i.get(i));
+        }
+        System.out.println();
+        Collections.sort(arr_i);
+        for(int i = 0; i < arr.size(); i++) {
+        	System.out.println(arr_i.get(i));
+        }
+        System.out.println();
+        Collections.reverse(arr_i);
+        for(int i = 0; i < arr.size(); i++) {
+        	System.out.println(arr_i.get(i));
+        }
+        System.out.println("Max : "+Collections.max(arr_i));
+        System.out.println("Min : "+Collections.min(arr_i));
+        
+	}
+
+}
