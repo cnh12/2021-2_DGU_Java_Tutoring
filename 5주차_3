@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+//알고리즘 실습
+
+public class Main3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int A = n;
+		int cnt = 0;
+		do {
+			int f = A/10;
+			int b = A%10;
+			int B = f + b;
+			A = (A%10)*10 + B%10;
+			cnt++;
+		} while(n != A);
+		System.out.println(cnt);
+					
+
+	}
+
+}
