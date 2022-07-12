@@ -1,0 +1,83 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Customer person = new Customer(10);
+		Factory Samsung = new Factory(50);
+				
+		person.show();
+		Samsung.show();
+		System.out.println();
+		person.order(30, Samsung);
+		person.show();
+		Samsung.show();
+		System.out.println();
+		person.order(40, Samsung);
+		person.show();
+		Samsung.show();
+
+	}
+
+}
+
+
+class Factory {
+	
+	private int stock;
+	private int inventoryholdingcost;
+	
+	Factory(){}
+	
+	Factory(int stock){
+		this.stock = stock;
+		this.inventoryholdingcost = this.stock*10;
+	}
+		
+	boolean order_in(int or) {
+		if(this.stock < or) {
+			return false;
+		}
+		else {
+			this.stock -= or;
+			this.inventoryholdingcost = this.stock * 10; 
+			return true;
+		}
+	}
+	
+	void show() {
+		System.out.println("공장의 현재 재고 : "+this.stock);
+		System.out.println("공장의 현재 재고처리비용 : "+this.inventoryholdingcost);
+	}
+}
+
+class Customer {
+	
+	private int have;
+	private double satisfaction;
+	
+	Customer(){}
+	
+	Customer(int have){
+		this.have = have;
+	}
+		
+	void order(int or, Factory fac) {
+		if(fac.order_in(or)) {
+			have += or;
+			this.satisfaction = 1.0/(double)(or/10)*100.0;
+		}
+		else {
+			System.out.println("재고없음");
+			this.satisfaction = -100.0;
+		}
+	}
+	
+	void show() {
+		System.out.println("고객의 현재 보유량 : "+this.have);
+		System.out.println("고객의 현재 만족도 : "+this.satisfaction+"%");
+	}
+	
+
+}
