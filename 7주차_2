@@ -1,0 +1,40 @@
+//Wrapper 클래스
+//기본형 8가지에 대한 Wrapper 클래스
+//존재 이유 : 기본 타입의 값을 객체로 다룰 수 있게 함
+//-> 형변환 용이
+
+
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Wrapper 클래스들의 주요 메소드들은 static
+		//-> 객체 생성 없이 클래스명.메소드명으로 호출 가능
+		int a = 100;		
+		System.out.println(Integer.toString(a));
+		System.out.println(String.valueOf(a));
+		
+		String b = "200";
+		System.out.println(Integer.parseInt(b));
+		
+		//박싱 : 기본 타입 -> Wrapper
+		//언박싱 : Wrapper -> 기본 타입
+		
+		Integer c = new Integer(10);	//권장X
+		Integer d = 10;	//자동 박싱
+		// Integer d = Integer.valueOf(10);
+		int e = d;		//자동 언박싱
+		// int e = d.intValue();
+		
+		
+		//String 다루기
+		//char charAt(int index) : 해당 인덱스 글자 반환
+		//int compareTo(String anotherString) : 두 문자열이 같으면 0, 사전순 비교
+		//int length() : 문자열의 길이 반환
+		//String trim() : 문자열 앞뒤 공백 문자 제거
+
+	}
+
+}
