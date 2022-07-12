@@ -1,0 +1,110 @@
+//상속
+
+//Object 클래스 : 모든 클래스의 부모 클래스
+//ex) equals(문자비교), toString()(String형변환)
+//오버라이딩 : 부모 클래스의 메소드 재정의
+//부모 클래스의 메소드와 동일한 원형(리턴타입, 메소드 이름, 매개변수 리스트)을 가져야 함
+//접근 제한을 더 좁게 설정 불가 (public/default -> private (X)), (default -> public (O))
+//오버라이딩이 불가한 메소드 - private(부모전용), static(클래스 소속), final
+//@Override annotation 사용 -> [Source]-[Override Methods]
+
+//super() : 부모 생성자 호출
+//this() : 자기 클래스의 다른 생성자 호출 가능 (this. 와는 다름)
+
+//오버로딩 : 동일한 이름의 메소드 재정의
+//메소드 이름은 같지만 매개변수의 타입이나 개수가 달라야 함
+//리턴 타입은 관계없음
+
+class A {
+	String aField = "클래스 A 필드";
+	
+	A(){
+		this("A()에서 A(String aa)실행");
+		System.out.println("A생성자 실행");		
+	}
+	
+	//생성자 오버로딩
+	A(String aa){
+		System.out.println("A생성자 실행 : "+aa);
+	}
+	
+	public void aMethod() {
+		System.out.println(aField);		
+	}
+	
+	//aMethod 오버로딩
+	public void aMethod(String str) {
+		System.out.println("aMethod 오버로딩 "+ str + aField);		
+	}
+
+}
+
+class B extends A {
+	String bField = "클래스 B 필드";
+
+	B(){
+		System.out.println("B생성자 실행");
+	}
+	
+	//생성자 오버로딩
+	B(String bb){
+		super("aaa");	//부모의 생성자를 호출
+		//this();	//this()나 super()은 무조건 첫 줄에만 가능 
+		System.out.println("B생성자 실행 : "+bb);
+	}
+	
+	//aMethod 오버라이딩
+	@Override
+	public void aMethod() {
+		System.out.println("B클래스의 "+aField);		
+	}
+	
+	
+	public void bMethod() {
+		System.out.println(aField); // 부모 클래스 필드 사용
+		System.out.println(bField); // 본인 클래스 필드 사용
+		// System.out.println("B : "+cField); // 컴파일 에러(자식 필드 사용 불가)
+	}
+
+}
+
+class C extends B {
+	String cField = "클래스 C 필드";
+	
+	C(){
+		System.out.println("C생성자 실행");
+	}
+	
+	public void cMethod() {
+		System.out.println(aField); // 조부모 클래스 필드 사용
+		System.out.println(bField); // 부모 클래스 필드 사용
+		System.out.println(cField); // 본인 클래스 필드 사용
+	}
+}
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("----------A----------");
+		A a = new A();
+		a.aMethod();
+		a.aMethod("String 파라미터");
+		
+		
+		System.out.println("----------B----------");
+		B b = new B();
+		b.aMethod();
+		
+		
+		
+		System.out.println("----------C----------");
+		
+
+		
+
+	}
+
+}
