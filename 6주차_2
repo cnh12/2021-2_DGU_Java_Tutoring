@@ -1,0 +1,96 @@
+//상속
+
+//처음에 상속에 대한 기본 개념 설명 후
+//기본생성자만 주석을 풀어 객체 호출 순서 설명
+//파라미터가 있는 생성자도 풀어서 부모생성자에 파라미터가 있는 명시적생성자가 있고,
+//자식생성자에서 super을 해주지 않는다면 오류가 나는 것을 설명
+//-> 자식생성자는 기본적으로 부모생성자를 호출하는 것을 설명
+//그러나 부모클래스에서 파라미터가 있는 생성자를 명시적으로 선언하고 기본생성자를 만들지 않았다면
+//자식클래스에서 부모클래스의 파라미터가 있는 생성자를 super을 통해 호출해주지 않으면
+//자식클래스에서는 기본적으로 부모클래스의 기본생성자를 호출해야 하는데
+//부모클래스에서는 기본생성자가 생성되어있지 않으므로 오류가 남
+//-> 클래스를 만들 때 기본생성자를 먼저 만드는게 좋음
+
+
+class A {
+	String aField = "클래스 A 필드";
+	
+//	A(){
+//		System.out.println("A생성자 실행");
+//	}
+	
+	A(String aa){
+		System.out.println("A생성자 실행 : "+aa);
+	}
+	
+	public void aMethod() {
+		System.out.println(aField);
+		// System.out.println("A : "+ bField); // 컴파일 에러(자식 필드 사용 불가)
+	}
+}
+
+class B extends A {
+	String bField = "클래스 B 필드";
+	
+//	B(){
+//		System.out.println("B생성자 실행");
+//	}
+	
+	B(String bb){
+		super("aaa");	//부모의 생성자를 호출
+		System.out.println("B생성자 실행 : "+bb);
+	}
+	
+	
+	public void bMethod() {
+		System.out.println(aField); // 부모 클래스 필드 사용
+		System.out.println(bField); // 본인 클래스 필드 사용
+		// System.out.println("B : "+cField); // 컴파일 에러(자식 필드 사용 불가)
+	}
+}
+
+class C extends B {
+	String cField = "클래스 C 필드";
+	
+	C(){
+		super("bbb");
+		System.out.println("C생성자 실행");
+	}
+	
+	public void cMethod() {
+		System.out.println(aField); // 조부모 클래스 필드 사용
+		System.out.println(bField); // 부모 클래스 필드 사용
+		System.out.println(cField); // 본인 클래스 필드 사용
+	}
+}
+
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("----------A----------");
+		A a = new A("aaaa");
+		a.aMethod(); // 본인 메소드 사용
+		// a.bMethod(); // A(부모) 객체로 B(자식) 메소드 접근 불가
+		System.out.println("----------A----------");
+		
+		System.out.println("----------B----------");
+		B b = new B("bbbb");
+		b.aMethod(); // 부모 메소드 사용
+		b.bMethod(); // 본인 메소드 사용
+		// b.cMethod(); // B(부모) 객체로 C(자식) 메소드 접근 불가
+		System.out.println("----------B----------");
+		
+		System.out.println("----------C----------");
+		C c = new C();
+		c.aMethod(); // 조부모 메소드 사용
+		c.bMethod(); // 부모 메소드 사용
+		c.cMethod(); // 본인 메소드 사용
+		System.out.println("----------C----------");
+		
+
+	}
+
+}
